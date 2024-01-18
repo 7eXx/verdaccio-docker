@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   verdaccio:
-    image: "verdaccio/verdaccio"
+    image: "verdaccio/verdaccio:5"
     container_name: verdaccio
     environment:
       VERDACCIO_PROTOCOL: https
