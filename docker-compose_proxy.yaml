@@ -1,0 +1,30 @@
+# /etc/hosts: 127.0.0.1 npm.example.com
+services:
+  traefik:
+    image: traefik:v2.3.6
+    ports:
+      - "4873:443"
+    command:
+      - --log.level=INFO
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.websecure.address=:443
+      - --entrypoints.websecure.http.tls=true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  verdaccio:
+    image: verdaccio/verdaccio:5
+    environment:
+    - NODE_ENV=production
+    #        - VERDACCIO_PUBLIC_URL=https://npm.example.com
+    volumes:
+      - verdaccio-data:/verdaccio
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.verdaccio.loadbalancer.server.port=4873"
+      - "traefik.http.routers.verdaccio.rule=Host(`npm.example.com`)"
+      - "traefik.http.routers.verdaccio.tls=true"
+
+volumes:
+  verdaccio-data:
