@@ -1,6 +1,7 @@
-# /etc/hosts: 127.0.0.1 npm.example.com
+version: "3.8"
+
 services:
-  traefik:
+  reverse-proxy:
     image: traefik:v2.3.6
     ports:
       - "4873:443"
@@ -16,14 +17,14 @@ services:
   verdaccio:
     image: verdaccio/verdaccio:5
     environment:
-    - NODE_ENV=production
-    #        - VERDACCIO_PUBLIC_URL=https://npm.example.com
+      NODE_ENV: production
+    #   VERDACCIO_PUBLIC_URL: https://verdaccio.sede.frigoveneta.it
     volumes:
       - verdaccio-data:/verdaccio
     labels:
       - "traefik.enable=true"
       - "traefik.http.services.verdaccio.loadbalancer.server.port=4873"
-      - "traefik.http.routers.verdaccio.rule=Host(`npm.example.com`)"
+      - "traefik.http.routers.verdaccio.rule=Host(`verdaccio.sede.frigoveneta.it`)"
       - "traefik.http.routers.verdaccio.tls=true"
 
 volumes:

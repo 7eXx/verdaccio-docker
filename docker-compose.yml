@@ -7,6 +7,7 @@ services:
     environment:
       VERDACCIO_PUBLIC_URL: "https://10.0.0.74:4873"
       VERDACCIO_PROTOCOL: https
+      # DEBUG: verdaccio:*
     ports:
       - "4873:4873"
     volumes:
