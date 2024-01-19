@@ -5,7 +5,7 @@ services:
     image: "verdaccio/verdaccio:5"
     container_name: verdaccio
     environment:
-      VERDACCIO_PUBLIC_URL: "https://10.0.0.74:4873"
+      # VERDACCIO_PUBLIC_URL: "https://10.0.0.74:4873"
       VERDACCIO_PROTOCOL: https
       # DEBUG: verdaccio:*
     ports:

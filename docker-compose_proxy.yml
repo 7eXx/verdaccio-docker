@@ -3,7 +3,6 @@ version: "3.8"
 services:
   reverse-proxy:
     image: traefik:v2.11
-    container_name: traefik
     ports:
       - "4873:443"
       - "8080:8080"
@@ -18,7 +17,6 @@ services:
 
   verdaccio:
     image: verdaccio/verdaccio:5
-    container_name: verdaccio
     environment:
       NODE_ENV: production
     #   VERDACCIO_PUBLIC_URL: https://verdaccio.sede.frigoveneta.it
