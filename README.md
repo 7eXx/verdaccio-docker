@@ -1,6 +1,9 @@
 # Verdaccio Docker
 This repository holds the docker compose file to deploy verdaccio
 
+## Pre check
+Create a copy of ***.env*** file  and fill it with custom values.
+
 ## TLDR
 It mounts conf, plugins and storage folders in the container
 

@@ -8,6 +8,9 @@ https:
   cert: /verdaccio/conf/verdaccio-cert.pem
   ca: /verdaccio/conf/verdaccio-csr.pem
 
+http_proxy: http://10.0.2.1:3128
+https_proxy: http://10.0.2.1:3128
+
 uplinks:
   npmjs:
     url: https://registry.npmjs.org/
